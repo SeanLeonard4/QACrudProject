@@ -1,6 +1,7 @@
 package com.qa;
 
 import java.util.List;
+import java.util.Optional;
 
 public class PatientServiceDB implements PatientService {
 
@@ -23,26 +24,31 @@ public class PatientServiceDB implements PatientService {
 
 	@Override
 	public Patient showPatientByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		Optional<Patient> optPatientByName = Optional.ofNullable(repo.findByName(name));
+		return optPatientByName.orElseThrow(IDNotFound::new);
 	}
 
 	@Override
 	public Patient showPatientByID(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		Optional<Patient> optPatientByID = repo.findById(id);
+		return optPatientByID.orElseThrow(IDNotFound::new);
 	}
 
 	@Override
 	public Patient updatePatient(Long id, Patient newPatient) {
-		// TODO Auto-generated method stub
-		return null;
+		Patient existing = this.showPatientByID(id);
+
+		existing.setEmail(newPatient.getEmail());
+		existing.setName(newPatient.getName());
+		existing.setPostCode(newPatient.getPostCode());
+		existing.setVaccine(newPatient.getVaccine());
+
+		return this.repo.save(existing);
 	}
 
 	@Override
 	public Boolean deletePatient(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		repo.deleteById(id);
+		return true;
 	}
-
 }
