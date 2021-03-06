@@ -22,7 +22,7 @@ public class PatientServiceDB implements PatientService {
 
 	@Override
 	public Patient addPatient(Patient patient) {
-		return repo.save(patient, patient.getVaccineDate(), patient.getFutureVacDate());
+		return repo.save(patient);
 	}
 
 	@Override
