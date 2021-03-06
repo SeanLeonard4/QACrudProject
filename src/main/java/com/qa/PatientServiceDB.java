@@ -22,6 +22,8 @@ public class PatientServiceDB implements PatientService {
 
 	@Override
 	public Patient addPatient(Patient patient) {
+		patient.setVaccineDate();
+		patient.setFutureVacDate();
 		return repo.save(patient);
 	}
 
@@ -42,6 +44,7 @@ public class PatientServiceDB implements PatientService {
 		Patient existing = this.showPatientByID(id);
 
 		existing.setEmail(newPatient.getEmail());
+		existing.setAge(newPatient.getAge());
 		existing.setName(newPatient.getName());
 		existing.setPostCode(newPatient.getPostCode());
 		existing.setVaccine(newPatient.getVaccine());

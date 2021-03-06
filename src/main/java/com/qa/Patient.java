@@ -31,6 +31,7 @@ public class Patient extends Formatter {
 
 	public Patient(String name, int age, String email, String postCode, String Vaccine) {
 		this.name = name;
+		this.age = age;
 		this.email = email;
 		this.postCode = postCode;
 		this.vaccine = Vaccine;
@@ -156,16 +157,16 @@ public class Patient extends Formatter {
 		return vaccineDate;
 	}
 
-	public void setVaccineDate(LocalDate vaccineDate) {
-		this.vaccineDate = formatter(vaccineDate);
+	public void setVaccineDate() {
+		this.vaccineDate = formatter(LocalDate.now());
 	}
 
 	public String getFutureVacDate() {
 		return futureVacDate;
 	}
 
-	public void setFutureVacDate(LocalDate vaccineDate) {
-		this.futureVacDate = formatter(vaccineDate.plusWeeks(12));
+	public void setFutureVacDate() {
+		this.futureVacDate = formatter(LocalDate.now().plusWeeks(12));
 	}
 
 }
