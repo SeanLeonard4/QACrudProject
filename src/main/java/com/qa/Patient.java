@@ -2,6 +2,7 @@ package com.qa;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +19,11 @@ public class Patient extends Formatter {
 	private String email;
 	private String postCode;
 	private String vaccine;
+
+	@Column(name = "Vaccine_Date")
 	private String vaccineDate;
+
+	@Column(name = "Future_Vaccine_Date")
 	private String futureVacDate;
 
 	public Patient() {
