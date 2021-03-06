@@ -3,6 +3,9 @@ package com.qa;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class PatientServiceDB implements PatientService {
 
 	private PatientRepo repo;
@@ -19,7 +22,7 @@ public class PatientServiceDB implements PatientService {
 
 	@Override
 	public Patient addPatient(Patient patient) {
-		return repo.save(patient);
+		return repo.save(patient, patient.getVaccineDate(), patient.getFutureVacDate());
 	}
 
 	@Override
