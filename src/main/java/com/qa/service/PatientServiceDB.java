@@ -1,9 +1,13 @@
-package com.qa;
+package com.qa.service;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
+
+import com.qa.domain.IDNotFound;
+import com.qa.domain.Patient;
+import com.qa.repo.PatientRepo;
 
 @Service
 public class PatientServiceDB implements PatientService {
@@ -22,7 +26,9 @@ public class PatientServiceDB implements PatientService {
 
 	@Override
 	public Patient addPatient(Patient patient) {
-		return repo.save(patient, patient.getVaccineDate(), patient.getFutureVacDate());
+		patient.setVaccineDate();
+		patient.setFutureVacDate();
+		return repo.save(patient);
 	}
 
 	@Override
@@ -42,6 +48,7 @@ public class PatientServiceDB implements PatientService {
 		Patient existing = this.showPatientByID(id);
 
 		existing.setEmail(newPatient.getEmail());
+		existing.setAge(newPatient.getAge());
 		existing.setName(newPatient.getName());
 		existing.setPostCode(newPatient.getPostCode());
 		existing.setVaccine(newPatient.getVaccine());

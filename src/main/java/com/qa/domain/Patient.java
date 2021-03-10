@@ -1,45 +1,53 @@
-package com.qa;
+package com.qa.domain;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-
-import org.springframework.data.annotation.Id;
+import javax.persistence.Id;
 
 @Entity
-public class Patient {
+public class Patient extends Formatter {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
 	private String name;
+	private int age;
 	private String email;
 	private String postCode;
 	private String vaccine;
-	private LocalDate vaccineDate;
-	private LocalDate futureVacDate;
+
+	@Column(name = "Vaccine_Date")
+	private String vaccineDate;
+
+	@Column(name = "Future_Vaccine_Date")
+	private String futureVacDate;
 
 	public Patient() {
 	}
 
-	public Patient(String name, String email, String postCode, String Vaccine) {
+	public Patient(String name, int age, String email, String postCode, String Vaccine) {
 		this.name = name;
+		this.age = age;
 		this.email = email;
 		this.postCode = postCode;
 		this.vaccine = Vaccine;
-		this.vaccineDate = LocalDate.now();
-		this.futureVacDate = vaccineDate.plusWeeks(12);
+		this.vaccineDate = formatter(LocalDate.now());
+		this.futureVacDate = formatter(LocalDate.now().plusWeeks(12));
 	}
 
-	public Patient(Long id, String name, String email, String postCode, String Vaccine) {
+	public Patient(Long id, String name, int age, String email, String postCode, String Vaccine) {
 		this.id = id;
 		this.name = name;
+		this.age = age;
 		this.email = email;
 		this.postCode = postCode;
 		this.vaccine = Vaccine;
-		this.vaccineDate = LocalDate.now();
-		this.futureVacDate = vaccineDate.plusWeeks(12);
+		this.vaccineDate = LocalDate.now().format(formatter);
+		this.futureVacDate = LocalDate.now().plusWeeks(12).format(formatter);
 	}
 
 	@Override
@@ -137,20 +145,28 @@ public class Patient {
 		this.vaccine = vaccine;
 	}
 
-	public LocalDate getVaccineDate() {
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public String getVaccineDate() {
 		return vaccineDate;
 	}
 
-	public void setVaccineDate(LocalDate vaccineDate) {
-		this.vaccineDate = vaccineDate;
+	public void setVaccineDate() {
+		this.vaccineDate = formatter(LocalDate.now());
 	}
 
-	public LocalDate getFutureVacDate() {
+	public String getFutureVacDate() {
 		return futureVacDate;
 	}
 
-	public void setFutureVacDate(LocalDate vaccineDate) {
-		this.futureVacDate = vaccineDate.plusWeeks(12);
+	public void setFutureVacDate() {
+		this.futureVacDate = formatter(LocalDate.now().plusWeeks(12));
 	}
 
 }
