@@ -1,4 +1,4 @@
-package com.qa;
+package com.qa.rest;
 
 import java.util.List;
 
@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.qa.domain.Patient;
+import com.qa.service.PatientService;
 
 @RestController
 public class PatientController {
@@ -31,8 +34,8 @@ public class PatientController {
 	}
 
 	@GetMapping("/showByID/{id}")
-	public ResponseEntity<Patient> showByID(@PathVariable Long ID) {
-		return new ResponseEntity<Patient>(service.showPatientByID(ID), HttpStatus.OK);
+	public ResponseEntity<Patient> showByID(@PathVariable Long id) {
+		return new ResponseEntity<Patient>(service.showPatientByID(id), HttpStatus.OK);
 	}
 
 	@GetMapping("/showByName/{name}")
@@ -41,13 +44,13 @@ public class PatientController {
 	}
 
 	@PutMapping("/updatePatient/{id}")
-	public ResponseEntity<Patient> updatePatient(@PathVariable Long ID, @RequestBody Patient newPatient) {
-		return new ResponseEntity<Patient>(service.updatePatient(ID, newPatient), HttpStatus.CREATED);
+	public ResponseEntity<Patient> updatePatient(@PathVariable Long id, @RequestBody Patient newPatient) {
+		return new ResponseEntity<Patient>(service.updatePatient(id, newPatient), HttpStatus.CREATED);
 	}
 
 	@DeleteMapping("deletePatient/{id}")
-	public ResponseEntity<Boolean> deletePatient(@PathVariable Long ID) {
-		service.deletePatient(ID);
+	public ResponseEntity<Boolean> deletePatient(@PathVariable Long id) {
+		service.deletePatient(id);
 		return new ResponseEntity<Boolean>(true, HttpStatus.ACCEPTED);
 	}
 

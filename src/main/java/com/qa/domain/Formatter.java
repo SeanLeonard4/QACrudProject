@@ -1,4 +1,4 @@
-package com.qa;
+package com.qa.domain;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

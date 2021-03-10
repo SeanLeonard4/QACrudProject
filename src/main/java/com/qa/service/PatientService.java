@@ -1,6 +1,8 @@
-package com.qa;
+package com.qa.service;
 
 import java.util.List;
+
+import com.qa.domain.Patient;
 
 public interface PatientService {
 

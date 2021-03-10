@@ -1,9 +1,13 @@
-package com.qa;
+package com.qa.service;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
+
+import com.qa.domain.IDNotFound;
+import com.qa.domain.Patient;
+import com.qa.repo.PatientRepo;
 
 @Service
 public class PatientServiceDB implements PatientService {
