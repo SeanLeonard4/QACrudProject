@@ -1,1 +1,1 @@
-INSERT INTO `patient` (`name`, `age`, `email`, `postCode`, ,`vaccine`, `vaccine_date`, 'future_vaccine_date`) VALUES ('Sean', 23 ,'sealeo1234@gmail.com', 'MG2 4JL', 'Astrazeneca', '10 March 2021', '02 June 2021');
+INSERT INTO `patient` (`name`, `age`, `email`, `post_code`,`vaccine`) VALUES ('Sean', 23 ,'sealeo1234@gmail.com', 'MG2 4JL', 'Astrazeneca');
