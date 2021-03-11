@@ -1,8 +1,11 @@
 package com.qa.rest;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,4 +55,21 @@ public class PatientControllerIntegrationTest {
 
 		mock.perform(mockRequest).andExpect(matchStatus).andExpect(matchContent);
 	}
+
+	@Test
+	void testRead() throws Exception {
+		Patient newPatient = new Patient(1L, "Sean", 23, "sealeo1234@gmail.com", "MG2 4JL", "Astrazeneca");
+		List<Patient> allPatients = List.of(newPatient);
+		String newPatientAsJSON = mapper.writeValueAsString(allPatients);
+
+		RequestBuilder mockRequest = get("/showAll");
+
+		ResultMatcher checkStatus = status().isOk();
+
+		ResultMatcher checkContent = content().json(newPatientAsJSON);
+
+		mock.perform(mockRequest).andExpect(checkStatus).andExpect(checkContent);
+
+	}
+
 }
