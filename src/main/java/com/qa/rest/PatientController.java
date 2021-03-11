@@ -45,7 +45,7 @@ public class PatientController {
 
 	@PutMapping("/updatePatient/{id}")
 	public ResponseEntity<Patient> updatePatient(@PathVariable Long id, @RequestBody Patient newPatient) {
-		return new ResponseEntity<Patient>(service.updatePatient(id, newPatient), HttpStatus.CREATED);
+		return new ResponseEntity<Patient>(service.updatePatient(id, newPatient), HttpStatus.ACCEPTED);
 	}
 
 	@DeleteMapping("deletePatient/{id}")

@@ -2,6 +2,7 @@ package com.qa.rest;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -70,6 +71,25 @@ public class PatientControllerIntegrationTest {
 
 		mock.perform(mockRequest).andExpect(checkStatus).andExpect(checkContent);
 
+	}
+
+	@Test
+	void testUpdate() throws Exception {
+		Patient newPatient = new Patient("Sean", 23, "Seanleo1234@gmail.com", "MG2 4JQ", "Astrazeneca");
+		// Convert person to json String
+		String newPatientAsJSON = mapper.writeValueAsString(newPatient);
+		// Build mock request
+		RequestBuilder mockRequest = put("/updatePatient/1").contentType(MediaType.APPLICATION_JSON)
+				.content(newPatientAsJSON);
+		// Create saved person
+		Patient savedPatient = new Patient(1L, "Sean", 23, "Seanleo1234@gmail.com", "MG2 4JQ", "Astrazeneca");
+		// Convert saved person to json
+		String savedPatientAsJSON = mapper.writeValueAsString(savedPatient);
+		// Check status as expected.
+		ResultMatcher matchStatus = status().isAccepted();
+		// Check that the response body is the correct person
+		ResultMatcher matchContent = content().json(savedPatientAsJSON);
+		mock.perform(mockRequest).andExpect(matchStatus).andExpect(matchContent);
 	}
 
 }
