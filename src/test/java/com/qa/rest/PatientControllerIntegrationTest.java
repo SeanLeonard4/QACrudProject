@@ -1,5 +1,6 @@
 package com.qa.rest;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
@@ -90,6 +91,16 @@ public class PatientControllerIntegrationTest {
 		// Check that the response body is the correct person
 		ResultMatcher matchContent = content().json(savedPatientAsJSON);
 		mock.perform(mockRequest).andExpect(matchStatus).andExpect(matchContent);
+	}
+
+	@Test
+	void testDelete() throws Exception {
+		Long id = 1L;
+		RequestBuilder mockRequest = delete("/deletePatient/" + id);
+
+		ResultMatcher matchStatus = status().isAccepted();
+
+		mock.perform(mockRequest).andExpect(matchStatus);
 	}
 
 }
