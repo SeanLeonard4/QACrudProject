@@ -1,5 +1,7 @@
 package com.qa.selenium;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,7 +23,14 @@ public class SeleniumTesting {
 	@BeforeEach
 	void setup() {
 		this.driver = new ChromeDriver();
-		this.driver.manage().window().maximize();
+	}
+
+	@Test
+	void testRead() {
+		this.driver.get("http://127.0.0.1:5500/QAProject-FrontEnd/index.html");
+		WebElement logo = this.driver.findElement(By.xpath("/html/body/header/h1/a/i"));
+
+		assertThat(logo.getText()).isEqualTo("UkHS");
 	}
 
 	@Test
