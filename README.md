@@ -19,6 +19,7 @@ This README will outline the project, the idea and any important development doc
 
 # 1. Resources
 
+- [Presentation](https://docs.google.com/presentation/d/1OAXufxzhM-CNBE_vZSWpitpH7k_0APi6YKuAamjfCC8/edit#slide=id.p)
 - [Jira Board](https://qatestsite2.atlassian.net/secure/RapidBoard.jspa?rapidView=4&projectKey=PROJ&view=reporting&chart=sprintRetrospective&sprint=4)
 - [Front-End Git Repo](https://github.com/SeanLeonard4/QAProject-FrontEnd)
 
