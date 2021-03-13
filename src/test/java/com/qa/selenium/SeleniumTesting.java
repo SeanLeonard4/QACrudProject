@@ -77,7 +77,7 @@ public class SeleniumTesting {
 		name.clear();
 		name.sendKeys("Sean Eric John Leonard");
 
-		WebElement submitUpdates = this.driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/form/div[3]/button"));
+		WebElement submitUpdates = this.driver.findElement(By.id("modalSubmit"));
 		submitUpdates.click();
 	}
 
@@ -87,7 +87,7 @@ public class SeleniumTesting {
 		WebDriverWait explicitWait = new WebDriverWait(driver, 10);
 
 		WebElement delete = explicitWait.until(
-				ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[1]/div/table/tbody/tr[6]/button[2]")));
+				ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[1]/div/table/tbody/tr[1]/button[2]")));
 
 		delete.click();
 
