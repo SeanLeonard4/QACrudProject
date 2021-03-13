@@ -23,6 +23,7 @@ public class SeleniumTesting {
 	@BeforeEach
 	void setup() {
 		this.driver = new ChromeDriver();
+		this.driver.manage().window().maximize();
 	}
 
 	@Test
@@ -76,8 +77,20 @@ public class SeleniumTesting {
 		name.clear();
 		name.sendKeys("Sean Eric John Leonard");
 
-		WebElement submitUpdates = this.driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/form/div[6]/button"));
+		WebElement submitUpdates = this.driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/form/div[3]/button"));
 		submitUpdates.click();
+	}
+
+	@Test
+	void testDelete() {
+		this.driver.get("http://127.0.0.1:5500/QAProject-FrontEnd/index.html");
+		WebDriverWait explicitWait = new WebDriverWait(driver, 10);
+
+		WebElement delete = explicitWait.until(
+				ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[1]/div/table/tbody/tr[6]/button[2]")));
+
+		delete.click();
+
 	}
 
 	@AfterEach
