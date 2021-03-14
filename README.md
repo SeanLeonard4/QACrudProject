@@ -134,3 +134,9 @@ are rendered next to the patient to ensure the correct patient is updated. This 
 - Automated emailing system - Which ensures that the patients are reminded at least one week in advance of their second vaccine as well as one day prior.
 - Provide more site functionality such as areas of access through the navbar.
 - Tweak the design to reduce the amount of white space.
+
+# Author
+
+I'd like to acknowledge the QA trainers and especially Jordan for giving me the tools to complete this project.
+
+Project by Sean Leonard
