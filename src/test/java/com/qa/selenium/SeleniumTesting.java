@@ -14,9 +14,14 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
+import org.springframework.boot.web.server.LocalServerPort;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+
 public class SeleniumTesting {
+
+	@LocalServerPort
+	private int port;
 
 	private RemoteWebDriver driver;
 
@@ -29,6 +34,7 @@ public class SeleniumTesting {
 	@Test
 	void testRead() {
 		this.driver.get("http://127.0.0.1:5500/QAProject-FrontEnd/index.html");
+
 		WebElement logo = this.driver.findElement(By.xpath("/html/body/header/h1/a/i"));
 
 		assertThat(logo.getText()).isEqualTo("UkHS");
@@ -66,6 +72,7 @@ public class SeleniumTesting {
 	@Test
 	void testUpdate() {
 		this.driver.get("http://127.0.0.1:5500/QAProject-FrontEnd/index.html");
+
 		WebDriverWait explicitWait = new WebDriverWait(driver, 10);
 
 		WebElement update = explicitWait.until(
@@ -84,6 +91,7 @@ public class SeleniumTesting {
 	@Test
 	void testDelete() {
 		this.driver.get("http://127.0.0.1:5500/QAProject-FrontEnd/index.html");
+
 		WebDriverWait explicitWait = new WebDriverWait(driver, 10);
 
 		WebElement delete = explicitWait.until(
