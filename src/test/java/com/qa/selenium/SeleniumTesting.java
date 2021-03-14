@@ -16,6 +16,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+
 public class SeleniumTesting {
 
 	private RemoteWebDriver driver;
@@ -29,6 +30,7 @@ public class SeleniumTesting {
 	@Test
 	void testRead() {
 		this.driver.get("http://127.0.0.1:5500/QAProject-FrontEnd/index.html");
+
 		WebElement logo = this.driver.findElement(By.xpath("/html/body/header/h1/a/i"));
 
 		assertThat(logo.getText()).isEqualTo("UkHS");
@@ -59,13 +61,14 @@ public class SeleniumTesting {
 
 		dropdown.selectByVisibleText("Oxford/Astrazeneca");
 
-		WebElement refresh = this.driver.findElement(By.xpath("/html/body/div[1]/form/button[2]"));
-		refresh.click();
+		WebElement submit = this.driver.findElement(By.xpath("/html/body/div[1]/form/button[1]"));
+		submit.click();
 	}
 
 	@Test
 	void testUpdate() {
 		this.driver.get("http://127.0.0.1:5500/QAProject-FrontEnd/index.html");
+
 		WebDriverWait explicitWait = new WebDriverWait(driver, 10);
 
 		WebElement update = explicitWait.until(
@@ -75,7 +78,7 @@ public class SeleniumTesting {
 		WebElement name = explicitWait.until(
 				ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[2]/div/div[2]/form/div[1]/input")));
 		name.clear();
-		name.sendKeys("Sean Eric John Leonard");
+		name.sendKeys("Brian Peters");
 
 		WebElement submitUpdates = this.driver.findElement(By.id("modalSubmit"));
 		submitUpdates.click();
@@ -84,6 +87,7 @@ public class SeleniumTesting {
 	@Test
 	void testDelete() {
 		this.driver.get("http://127.0.0.1:5500/QAProject-FrontEnd/index.html");
+
 		WebDriverWait explicitWait = new WebDriverWait(driver, 10);
 
 		WebElement delete = explicitWait.until(
