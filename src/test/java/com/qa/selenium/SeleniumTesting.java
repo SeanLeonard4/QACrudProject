@@ -29,7 +29,7 @@ public class SeleniumTesting {
 
 	@Test
 	void testRead() {
-		this.driver.get("http://127.0.0.1:5500/QAProject-FrontEnd/index.html");
+		this.driver.get("http://127.0.0.1:5500/QAProject-FrontEnd/HTML/index.html");
 
 		WebElement logo = this.driver.findElement(By.xpath("/html/body/header/h1/a/i"));
 
@@ -39,7 +39,7 @@ public class SeleniumTesting {
 	@Test
 	void testSubmit() {
 
-		this.driver.get("http://127.0.0.1:5500/QAProject-FrontEnd/index.html");
+		this.driver.get("http://127.0.0.1:5500/QAProject-FrontEnd/HTML/index.html");
 
 		WebElement name = this.driver.findElement(By.xpath("/html/body/div[1]/form/div[1]/input"));
 
@@ -67,7 +67,7 @@ public class SeleniumTesting {
 
 	@Test
 	void testUpdate() {
-		this.driver.get("http://127.0.0.1:5500/QAProject-FrontEnd/index.html");
+		this.driver.get("http://127.0.0.1:5500/QAProject-FrontEnd/HTML/index.html");
 
 		WebDriverWait explicitWait = new WebDriverWait(driver, 10);
 
@@ -86,7 +86,7 @@ public class SeleniumTesting {
 
 	@Test
 	void testDelete() {
-		this.driver.get("http://127.0.0.1:5500/QAProject-FrontEnd/index.html");
+		this.driver.get("http://127.0.0.1:5500/QAProject-FrontEnd/HTML/index.html");
 
 		WebDriverWait explicitWait = new WebDriverWait(driver, 10);
 
